@@ -1,6 +1,31 @@
+package com.deliverytech.delivery_api.controller;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.time.LocalDateTime;
+import java.util.Map;
+
 @RestController
+@Tag(name = "Health Check", description = "Verifica o status da API e exibe informações do sistema")
 public class HealthController {
 
+    @Operation(
+        summary = "Verifica o status da API",
+        description = "Retorna informações básicas como status, timestamp, versão do Java e nome do serviço.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "API em funcionamento",
+                content = @Content(mediaType = "application/json")
+            )
+        }
+    )
     @GetMapping("/health")
     public Map<String, String> health() {
         return Map.of(
@@ -11,6 +36,20 @@ public class HealthController {
         );
     }
 
+    @Operation(
+        summary = "Informações da aplicação",
+        description = "Retorna informações detalhadas da aplicação como nome, versão, desenvolvedor e frameworks.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "Informações da aplicação retornadas com sucesso",
+                content = @Content(
+                    mediaType = "application/json",
+                    schema = @Schema(implementation = AppInfo.class)
+                )
+            )
+        }
+    )
     @GetMapping("/info")
     public AppInfo info() {
         return new AppInfo(
@@ -18,11 +57,10 @@ public class HealthController {
             "1.0.0",
             "FBM",
             "JDK 24",
-            "Spring Boot 3.5.x"
+            "Spring Boot 3.5.4"
         );
     }
 
-    // Record para demonstrar recurso do Java 14+ (disponível no JDK 24)
     public record AppInfo(
         String application,
         String version,
