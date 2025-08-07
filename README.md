@@ -40,4 +40,5 @@ Sistema de delivery desenvolvido com Spring Boot e Java 24.
 ## 👨‍💻 Desenvolvedor
 
 FBM - 58B 02728
+
 Desenvolvido com JDK 24 e Spring Boot 3.5.4
