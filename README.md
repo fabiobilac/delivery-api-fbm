@@ -23,7 +23,7 @@ Sistema de delivery desenvolvido com Spring Boot e Java 24.
 1. **Pré-requisitos:** JDK 24 instalado
 2. Clone o repositório
 3. Execute: `./mvnw spring-boot:run`
-4. Acesse: http://localhost:8080/health
+4. Acesse: <http://localhost:8080/health>
 
 ## 📋 Endpoints
 
@@ -39,5 +39,5 @@ Sistema de delivery desenvolvido com Spring Boot e Java 24.
 
 ## 👨‍💻 Desenvolvedor
 
-FBM - 58B 02728 
+FBM - 58B 02728
 Desenvolvido com JDK 24 e Spring Boot 3.5.4
